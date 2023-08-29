@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-size: cover;
+      background-image: url(https://img.freepik.com/free-photo/abstract-futuristic-background-with-3d-design_1361-3532.jpg?w=1060&t=st=1692113286~exp=1692113886~hmac=adcd087d14bf9955568b22f0575716e2f1b362d434dd8ec0f3071d44ff0e683c)
+    }
+
+    .calculator {
+      background: linear-gradient(135deg, blue, black, purple);
+      border-radius: 12px;
+      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      height: 420px;
+      padding: 20px;
+      text-align: start;
+    }
+
+
+    #display {
+      width: 95%;
+      height: 50px;
+      background-color: rgb(11, 5, 103);
+      border-color: black;
+      padding: 10px;
+      color: #f2f2f2;
+      font-size: 37px;
+      text-align: end;
+    }
+
+    .buttons {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      width: 100px;
+    }
+
+
+
+    .button {
+      background-color: #f2f2f2;
+      width: 70px;
+      height: 55px;
+      border-radius: 40px;
+      font-size: 30px;
+      font-style: initial;
+    }
+
+    #op {
+      background-color: #ff9800;
+      color: #fff;
+      width: 75px;
+      height: 50px;
+      border-radius: 40px;
+      font-size: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .calculator {
+        width: 50%;
+        /* Adjust width for smaller screens */
+      }
+      label, input, button {
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="buttons">
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button id="op" class="button">+</button>
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button id="op" class="button">-</button>
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button id="op" class="button">*</button>
+      <button id="op" class="button">C</button>
+      <button class="button">0</button>
+      <button id="op" class="button">=</button>
+      <button id="op" class="button">/</button>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const display = document.getElementById("display");
+      const buttons = document.querySelectorAll(".button");
+
+      buttons.forEach(button => {
+        button.addEventListener("click", function () {
+          const buttonText = button.textContent;
+
+          if (buttonText === "=") {
+            try {
+              display.value = eval(display.value);
+            } catch (error) {
+              display.value = "Error";
+            }
+          } else if (buttonText === "C") {
+            display.value = "";
+          } else {
+            display.value += buttonText;
+          }
+        });
+      });
+    });
+
+  </script>
+</body>
+
+
+</html>
